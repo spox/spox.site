@@ -1,0 +1,8 @@
+fieldset do
+    legend do
+        text 'Code snippet'
+    end
+    div :class => 'content' do
+        text code_insert(@id)
+    end
+end

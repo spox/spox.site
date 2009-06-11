@@ -1,0 +1,167 @@
+fieldset :class => 'panel' do
+    legend do
+        text 'Logs'
+    end
+    div :class => 'stats' do
+        b "Total: "
+        text Models::Note.count.to_s
+        br
+        last = Models::Note.order(:created.desc).last
+        b "Last entry: "
+        text "#{last ? Models::Note.all.last.created : 'no entries found'}"
+    end
+    div :class => 'listing' do
+        Models::Note.all.each do |note|
+            div :class => 'item' do
+                a :href => "/admin/notes/edit/#{note.pk}" do
+                    text '[edit]'
+                end
+                a :href => "/admin/notes/process/delete/#{note.pk}" do
+                    text '[delete]'
+                end
+                text ' - '
+                a :href => "/logs/view/#{note.pk}" do
+                    text "#{note.created.year}/#{note.created.month}/#{note.created.day}: #{note.title}"
+                end
+            end
+        end
+    end
+    form :action => '/admin/action', :method => 'POST' do
+        div :class => 'buttons' do
+            input :type => 'submit', :name => 'do_this', :value => 'create log'
+        end
+    end
+end
+fieldset :class => 'panel' do
+    legend do
+        text 'Tags'
+    end
+    div :class => 'stats' do
+        b 'Total: '
+        text "#{Models::Tag.all.count}"
+    end
+end
+fieldset :class => 'panel' do
+    legend do
+        text 'Projects'
+    end
+    div :class => 'stats' do
+        b 'Total: '
+        text "#{Models::Project.all.count}"
+    end
+    div :class => 'listing' do
+        Models::Project.all.each do |project|
+            div :class => 'item' do
+                a :href => "/admin/projects/edit/#{project.pk}" do
+                    text '[edit]'
+                end
+                a :href => "/admin/projects/process/delete/#{project.pk}" do
+                    text '[delete]'
+                end
+                text ' - '
+                a :href => "/projects/view/#{project.pk}" do
+                    text "#{project.title}"
+                end
+            end
+        end
+    end
+    form :action => '/admin/action', :method => 'POST' do
+        div :class => 'buttons' do
+            input :type => 'submit', :name => 'do_this', :value => 'create project'
+        end
+    end
+end
+fieldset :class => 'panel' do
+    legend do
+        text 'Links'
+    end
+    div :class => 'stats' do
+        b 'total: '
+        text "#{Models::Link.all.count}"
+        br
+        b 'best: '
+        best = Models::Link.order(:score.desc).first
+        text "#{best ? best.title : 'none'}"
+    end
+    div :class => 'listing' do
+        Models::Link.all.each do |link|
+            div :class => 'item' do
+                a :href => "/admin/links/edit/#{link.pk}" do
+                    text '[edit]'
+                end
+                a :href => "/admin/links/process/delete/#{link.pk}" do
+                    text '[delete]'
+                end
+                text " #{link.score} "
+                a :href => "/links/view/#{link.pk}" do
+                    text link.title
+                end
+            end
+        end
+    end
+    form :action => '/admin/action', :method => 'POST' do
+        div :class => 'buttons' do
+            input :type => 'submit', :name => 'do_this', :value => 'create link'
+        end
+    end
+end
+fieldset :class => 'panel' do
+    legend do
+        text 'Codes'
+    end
+    div :class => 'stats' do
+        b 'total: '
+        text "#{Models::Code.all.count}"
+    end
+    div :class => 'listing' do
+        Models::Code.all.each do |code|
+            div :class => 'item' do
+                a :href => "/admin/codes/edit/#{code.pk}" do
+                    text '[edit]'
+                end
+                a :href => "/admin/codes/process/delete/#{code.pk}" do
+                    text '[delete]'
+                end
+                text ' - '
+                a :href => "/codes/view/#{code.pk}" do
+                    text code.summary
+                end
+            end
+        end
+    end
+    form :action => '/admin/action', :method => 'POST' do
+        div :class => 'buttons' do
+            input :type => 'submit', :name => 'do_this', :value => 'create code'
+        end
+    end
+end
+fieldset :class => 'panel' do
+    legend do
+        text 'Users'
+    end
+    div :class => 'stats' do
+        b 'total: '
+        text "#{Models::User.all.count}"
+    end
+    div :class => 'listing' do
+        Models::User.all.each do |user|
+            div :class => 'item' do
+                a :href => "/admin/users/edit/#{user.pk}" do
+                    text '[edit]'
+                end
+                a :href => "/admin/users/process/delete/#{user.pk}" do
+                    text '[delete]'
+                end
+                text ' - '
+                a :href => "/admin/users/view/#{user.pk}" do
+                    text user.username
+                end
+            end
+        end
+    end
+    form :action => '/admin/users/create', :method => 'POST' do
+        div :class => 'buttons' do
+            input :type => 'submit', :name => 'do_this', :value => 'create user'
+        end
+    end
+end

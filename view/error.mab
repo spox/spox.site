@@ -1,0 +1,14 @@
+fieldset do
+    legend do
+        text 'Error Page'
+    end
+    div :class => 'meta' do
+        b ' Date: '
+        text Time.now.to_s
+        b ' Author: '
+        text 'spox'
+    end
+    div :class => 'content' do
+        p "#{@e}"
+    end
+end

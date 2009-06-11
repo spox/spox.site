@@ -1,0 +1,30 @@
+fieldset do
+    legend do
+        text "#{@log.title}"
+    end
+    div :class => 'meta' do
+        span :class => 'ss_sprite ss_date' do
+            text "#{@log.created}"
+        end
+        text ' '
+        span :class => 'ss_sprite ss_user_gray' do
+            text @log.user.username
+        end
+        text ' '
+        span :class => 'ss_sprite ss_tag_yellow' do
+            @log.tags.each{|t| a(:href => "/tags/view/#{t.name}"){text "#{t.name}"; text ' '}}
+        end
+    end
+    div :class => 'content' do
+        text smab(@log.content)
+    end
+end
+div :class => 'controls' do
+    a :href => "/logs/view/#{(@log.pk - 1) < 1 ? 1 : @log.pk - 1}" do
+        text '&lt;--'
+    end
+    text ' | '
+    a :href => "/logs/view/#{@log.pk + 1}" do
+        text '--&gt;'
+    end
+end

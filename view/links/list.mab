@@ -1,0 +1,31 @@
+div do
+    @links.each do |link|
+        fieldset do
+            legend do
+                a :href => "/links/view/#{link.pk}" do
+                    text link.title
+                end
+            end
+            div :class => 'alpha' do
+                b 'URL: '
+                a :href => "/links/out/#{link.pk}" do
+                    text link.url
+                end
+            end
+            div :class => 'content' do
+                text smab(link.description)
+            end
+        end
+    end
+    div :class => 'controls' do
+        div :class => 'holder' do
+            a :href => "/links/list/#{@back}" do
+                text '&lt;--'
+            end
+            text ' | '
+            a :href => "/links/list/#{@forward}" do
+                text '--&gt;'
+            end
+        end
+    end
+end

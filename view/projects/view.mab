@@ -1,0 +1,40 @@
+fieldset do
+    legend do
+        text @project.title
+    end
+    unless(@project.website.empty?)
+        div :class => 'alpha' do
+            b 'Website: '
+            a :href => @project.website do
+                text @project.website
+            end
+        end
+    end
+    unless(@project.rss.empty?)
+        div :class => 'alpha' do
+            span :class => 'ss_sprite ss_rss' do
+                b 'Trac RSS: '
+            end
+            a :href => @project.rss do
+                text 'rss feed'
+            end
+        end
+        div :class => 'content' do
+            @stats.each do |s|
+                p do
+                    a :href => s[:link] do
+                        text s[:text]
+                    end
+                end
+            end
+        end
+    end
+    unless(@project.description.empty?)
+        div :class => 'alpha' do
+            b 'Description: '
+        end
+        div :class => 'content' do
+            text smab(@project.description)
+        end
+    end
+end

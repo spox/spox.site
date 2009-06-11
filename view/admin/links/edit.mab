@@ -1,0 +1,29 @@
+fieldset do
+    legend do
+        text 'Edit Link'
+    end
+    form :action => '/admin/links/process/edit', :method => 'POST' do
+        b 'url:'
+        br
+        input :type => 'text', :name => 'url', :value => @link.url
+        br
+        br
+        b 'title:'
+        br
+        input :type => 'text', :name => 'title', :value => @link.title
+        br
+        br
+        b 'description:'
+        br
+        text '<textarea name="description">' + @link.description + '</textarea>'
+        br
+        br
+        b 'tags:'
+        br
+        input :type => 'input', :name => 'tags', :value => @link.tags.empty? ? '' : @link.tags.map{|t|t.name}.join(' ')
+        input :type => 'hidden', :name => 'lid', :value => @link.pk
+        br
+        br
+        input :type => 'submit', :value => 'edit'
+    end
+end

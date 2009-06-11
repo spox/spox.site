@@ -1,0 +1,172 @@
+html do
+    head do
+        title 'spox box [serialized idea objects]'
+        link :rel => "stylesheet", :href => "/css/blueprint/screen.css", :type => "text/css", :media => "screen, projection"
+        link :rel => "stylesheet", :href => "/css/blueprint/src/typography.css", :type => "text/css", :media => "screen, projection"
+        link :rel => "stylesheet", :href => "/css/blueprint/print.css", :type => "text/css", :media => "print"
+        link :rel => "stylesheet", :href => "/css/spox.css", :type => "text/css", :media => "screen, projection"
+        text '<!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="ie.css" type="text/css" media="screen, projection"><![endif]-->'
+    end
+    body do
+         div :class => 'container colorify borderify' do
+            div :class => 'span-24 colorify' do
+                div :class => 'header' do
+                    div :class => 'links' do
+                        ['Home', 'Projects', 'Tags', 'About'].each do |l|
+                            a :href => "/#{l.downcase}" do
+                                l
+                            end
+                            text ' | '
+                        end
+                    end
+                    div :class => 'tagline' do
+                        "&nbsp;"
+                    end
+                end
+            end
+            div :class => 'span-18 uncolorify' do
+                if(flash[:error])
+                    div :class => 'error' do
+                        b 'Error: '
+                        text flash[:error]
+                    end
+                elsif(flash[:notice])
+                    div :class => 'notice' do
+                        b 'Notice: '
+                        text flash[:notice]
+                    end
+                elsif(flash[:success])
+                    div :class => 'success' do
+                        b 'Success: '
+                        text flash[:success]
+                    end
+                end
+                div :class => 'content' do
+                    text "#{@content}"
+                end
+            end
+            div :class => 'span-6 last' do
+                div :class => 'menus colorify' do
+                    div :class => 'holder' do
+                        div :class => 'title' do
+                            text 'Directory'
+                        end
+                        div :class => 'item' do
+                            span :class => 'ss_sprite ss_bullet_star' do
+                                a :href => '/home' do
+                                    text 'Home'
+                                end
+                            end
+                        end
+                        div :class => 'item' do
+                            span :class => 'ss_sprite ss_bullet_star' do
+                                a :href => '/about' do
+                                    text 'About'
+                                end
+                            end
+                        end
+                        div :class => 'item' do
+                            span :class => 'ss_sprite ss_bullet_star' do
+                                a :href => '/tags' do
+                                    text 'Tags'
+                                end
+                            end
+                            div :class => 'subitem' do
+                                span :class => 'ss_sprite ss_bullet_arrow_down' do
+                                    a :href => '/tags/cloud' do
+                                        text 'cloud'
+                                    end
+                                end
+                            end
+                            div :class => 'subitem' do
+                                span :class => 'ss_sprite ss_bullet_arrow_down' do
+                                    a :href => '/tags/all' do
+                                        text 'all'
+                                    end
+                                end
+                            end
+                        end
+                        div :class => 'item' do
+                            span :class => 'ss_sprite ss_bullet_star' do
+                                a :href => '/projects' do
+                                    text ' Projects'
+                                end
+                            end
+                            Models::Project.all.each do |proj|
+                                div :class => 'subitem' do
+                                    span :class => 'ss_sprite ss_bullet_arrow_down' do
+                                        a :href => "/projects/view/#{proj.pk}" do
+                                            text proj.title
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                        if(logged_in?)
+                            div :class => 'item' do
+                                span :class => 'ss_sprite ss_lock_open' do
+                                    a :href => '/admin' do
+                                        text 'Admin'
+                                    end
+                                    div :class => 'subitem' do
+                                        span :class => 'ss_sprite ss_bullet_arrow_down' do
+                                            a :href => '/admin/logout' do
+                                                text 'Logout'
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                    br
+                    div :class => 'holder' do
+                        div :class => 'title' do
+                            a :href => '/tags/cloud' do
+                                text 'Cloudy'
+                            end
+                        end
+                        div :class => 'cloudbox' do
+                            tags = cloudy(20)
+                            tags.each do |t|
+                                tag = Models::Tag[t[:tag_id].to_i]
+                                span :style => "font-size: #{(1 * (t[:count].to_f / tags.size))+0.8}em;" do
+                                    a :href => "/tags/view/#{tag.name}" do
+                                        text tag.name
+                                    end
+                                end
+                                text ' '
+                            end
+                        end
+                    end
+                    br
+                    div :class => 'holder' do
+                        div :class => 'title' do
+                            a :href => '/links' do
+                                text 'Links'
+                            end
+                        end
+                        Models::Link.order(:score.desc).limit(5).each do |link|
+                            div :class => 'item' do
+                                span :class => 'ss_sprite ss_link_go' do
+                                    a :href => "/links/out/#{link.pk}" do
+                                        text link.title
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+            div :class => 'span-24' do
+                div :class => 'footer colorify' do
+                    text 'spox &lt;spox@modspox.com&gt;'
+                    br
+                    text 'categorized and stored'
+                    br
+                    text "&copy; #{Time.now.year}"
+                end
+            end
+         end
+     end
+end

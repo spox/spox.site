@@ -1,0 +1,236 @@
+body {
+    background-color: #acae77;
+}
+
+.colorify {
+    background-color: #5c5c43;
+}
+.uncolorify {
+    background-color: #d5d78f;
+}
+.borderify {
+    border-color: #5c5c43;
+    border-style: solid;
+    border-width: 2px;
+}
+.header {
+    background-image: url( ../img/light_on_smaller.gif );
+    background-position: center left;
+    background-repeat: no-repeat;
+    color: #f9f4ca;
+    height: 110px;
+    text-align: right;
+}
+
+.header a {
+    color: #f9f4ca;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+.header .links {
+    height: 30px;
+    padding-top: 10px;
+    padding-right: 20px;
+}
+
+.header .tagline {
+    background-image: url( ../img/tagline.gif );
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    height: 60px;
+    margin-right: 60px;
+}
+
+.menus {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.menus .holder {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 10px;
+    padding: 5px;
+    background-color: #8a895b;
+    color: #f9f4ca;
+    border-color: #7c794c;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.menus .holder .title {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    text-align: center;
+    font-weight: 800;
+    font-size: large;
+    color: #acae77;
+    background-color: #f4f7c6;
+    margin-bottom: 10px;
+}
+
+.menus .holder .title a {
+    color: #acae77;
+}
+
+.menus .holder .title a:hover {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.menus a {
+    color: #f9f4ca;
+    text-decoration: none;
+}
+
+.menus a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.menus .holder .item {
+}
+
+.menus .holder .cloudbox {
+    background-color: #5c5c43;
+    margin: 3px;
+    border: 1px solid #bbb;
+    padding: 5px;
+}
+
+.menus .holder .subitem {
+    padding-left: 10px;
+}
+
+.footer {
+    padding: 10px;
+    text-align: center;
+    color: #f9f4ca;
+}
+
+.content {
+    padding: 10px;
+}
+
+.content a {
+    color: #777777;
+    text-decoration: none;
+}
+
+.content a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+.content .formbox {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.content .formbox form .buttons {
+    text-align: right;
+}
+
+.content .formbox form .buttons input {
+    background-color: #acae77;
+    color: #fff;
+}
+
+.content fieldset {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border: 1px solid #bbb;
+    padding: 10px;
+    background: #f9fae3;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.content fieldset legend {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    font-size: 1.1em;
+    padding: .4em .8em;
+    background: #f4f7c6;
+    border: 1px solid #bbb;
+}
+
+.content .alpha {
+    background-color: #fff;
+    font-weight: 800;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.content pre {
+    border: 1px dashed #bbb;
+    padding: 5px;
+    color: #000999;
+    background: #fff;
+    overflow: auto;
+}
+
+.content .panel {
+    width: 290px;
+    float: left;
+    padding: 10px;
+    margin: 10px;
+    height: 350px;
+}
+
+.content .panel a {
+    color: #000009;
+    text-decoration: none;
+}
+
+.content .panel a:hover {
+    color: red;
+}
+
+.content .panel .stats {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.content .panel .listing {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    height: 200px;
+    overflow: scroll;
+}
+
+.content .panel .buttons {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.content .panel .buttons input{
+    background-color: #acae77;
+    color: #fff;
+    border: 1px solid #bbb;
+}
+
+.content .panel .buttons input:hover{
+    background-color: #aca499;
+    border: 1px solid #bbb;
+}
+
+.content .controls {
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #bbb;
+    font-weight: 600;
+}
+
+.content .more {
+    margin: 10px;
+    text-align: right;
+}

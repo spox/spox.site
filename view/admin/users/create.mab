@@ -1,0 +1,35 @@
+div :class => 'formbox' do
+    fieldset do
+        legend do
+            text 'Create User'
+        end
+        form :action => '/admin/users/process/create', :method => 'POST' do
+            b 'username:'
+            br
+            input :type => 'text', :name => 'username'
+            br
+            br
+            b 'email:'
+            br
+            input :type => 'text', :name => 'email'
+            br
+            br
+            b 'name:'
+            br
+            input :type => 'text', :name => 'name'
+            br
+            br
+            b 'password:'
+            br
+            input :type => 'password', :name => 'password'
+            br
+            br
+            b 're-enter password'
+            br
+            input :type => 'password', :name => 'checkpass'
+            br
+            br
+            input :type => 'submit', :value => 'create'
+        end
+    end
+end

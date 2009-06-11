@@ -1,0 +1,14 @@
+fieldset do
+    legend do
+        text 'Projects'
+    end
+    div :class => 'content' do
+        Models::Project.all.each do |prod|
+            div :class => 'alpha' do
+                a :href => "/projects/view/#{prod.pk}" do
+                    text prod.title
+                end
+            end
+        end
+    end
+end

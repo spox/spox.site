@@ -1,0 +1,41 @@
+div do
+    @notes.each do |note|
+        fieldset do
+            legend do
+                text "#{note.title}"
+            end
+            div :class => 'meta' do
+                span :class => 'ss_sprite ss_date' do
+                    text "#{note.created}"
+                end
+                text ' '
+                span :class => 'ss_sprite ss_user_gray' do
+                    text note.user.username
+                end
+                text ' '
+                span :class => 'ss_sprite ss_tag_yellow' do
+                    note.tags.each{|t| a(:href => "/tags/view/#{t.name}"){text "#{t.name}"; text ' '}}
+                end
+            end
+            div :class => 'content' do
+                text smab(note.content)
+            end
+            div :class => 'more' do
+                a :href => "/logs/view/#{note.pk}" do
+                    text 'link'
+                end
+            end
+        end
+    end
+    div :class => 'controls' do
+        div :class => 'holder' do
+            a :href => "/logs/list/#{@back}" do
+                text '&lt;--'
+            end
+            text ' | '
+            a :href => "/logs/list/#{@forward}" do
+                text '--&gt;'
+            end
+        end
+    end
+end

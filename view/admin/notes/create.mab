@@ -1,0 +1,23 @@
+fieldset do
+    legend do
+        text 'Create Log'
+    end
+    form :action => '/admin/notes/process/create', :method => 'POST' do
+        text 'title:'
+        br
+        input :type => 'text', :name => 'title', :size => '40'
+        br
+        br
+        text 'content:'
+        br
+        text '<textarea name="content" rows="50" cols="300"></textarea>'
+        br
+        br
+        text 'tags:'
+        br
+        input :type => 'text', :name => 'tags', :size => '40'
+        br
+        br
+        input :type => 'submit', :value => 'create'
+    end
+end

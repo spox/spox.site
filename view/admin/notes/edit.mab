@@ -1,0 +1,24 @@
+fieldset do
+    legend do
+        text 'Edit Log'
+    end
+    form :action => '/admin/notes/process/edit', :method => 'POST' do
+        text 'title:'
+        br
+        input :type => 'text', :name => 'title', :value => @note.title, :size => '40'
+        br
+        br
+        text 'content:'
+        br
+        text '<textarea name="content" rows="50" cols="300">' + @note.content + '</textarea>'
+        br
+        br
+        text 'tags:'
+        br
+        input :type => 'text', :name => 'tags', :value => @note.tags.map{|t|t.name}.join(' '), :size => '40'
+        input :type => 'hidden', :name => 'nid', :value => @note.pk
+        br
+        br
+        input :type => 'submit', :value => 'edit'
+    end
+end

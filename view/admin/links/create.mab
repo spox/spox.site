@@ -1,0 +1,28 @@
+fieldset do
+    legend do
+        text 'Create Link'
+    end
+    form :action => '/admin/links/process/create', :method => 'POST' do
+        b 'url:'
+        br
+        input :type => 'text', :name => 'url'
+        br
+        br
+        b 'title:'
+        br
+        input :type => 'text', :name => 'title'
+        br
+        br
+        b 'description:'
+        br
+        text '<textarea name="description"></textarea>'
+        br
+        br
+        b 'tags:'
+        br
+        input :type => 'input', :name => 'tags'
+        br
+        br
+        input :type => 'submit', :value => 'create'
+    end
+end

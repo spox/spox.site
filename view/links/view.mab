@@ -1,0 +1,23 @@
+fieldset do
+    legend do
+        text @link.title
+    end
+    div :class => 'alpha' do
+        b 'URL: '
+        a :href => @link.url do
+            text @link.url
+        end
+    end
+    div :class => 'content' do
+        text smab(@link.description)
+    end
+end
+div :class => 'controls' do
+    a :href => "/links/view/#{(@link.pk - 1) < 1 ? 1 : @link.pk - 1}" do
+        text '&lt;--'
+    end
+    text ' | '
+    a :href => "/links/view/#{@link.pk + 1}" do
+        text '--&gt;'
+    end
+end

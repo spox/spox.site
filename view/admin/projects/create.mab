@@ -1,0 +1,37 @@
+fieldset do
+    legend do
+        text 'Create Project'
+    end
+    form :action => '/admin/projects/process/create', :method => 'POST' do
+        b 'title:'
+        br
+        input :type => 'text', :name => 'title'
+        br
+        br
+        b 'rss:'
+        br
+        input :type => 'text', :name => 'rss'
+        br
+        br
+        b 'website:'
+        br
+        input :type => 'text', :name => 'website'
+        br
+        br
+        b 'description:'
+        br
+        text '<textarea name="description"></textarea>'
+        br
+        br
+        b 'tags:'
+        br
+        input :type => 'input', :name => 'tags'
+        br
+        br
+        b 'public: '
+        input :type => 'checkbox', :name => 'public', :value => '1'
+        br
+        br
+        input :type => 'submit', :value => 'create'
+    end
+end

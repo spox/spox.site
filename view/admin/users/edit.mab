@@ -1,0 +1,36 @@
+div :class => 'formbox' do
+    fieldset do
+        legend do
+            text 'Edit User'
+        end
+        form :action => '/admin/users/process/edit', :method => 'POST' do
+            b 'username:'
+            br
+            input :type => 'text', :name => 'username', :value => @user.username
+            br
+            br
+            b 'email:'
+            br
+            input :type => 'text', :name => 'email', :value => @user.email
+            br
+            br
+            b 'name:'
+            br
+            input :type => 'text', :name => 'name', :value => @user.name
+            br
+            br
+            b 'password:'
+            br
+            input :type => 'password', :name => 'password'
+            br
+            br
+            b 're-enter password'
+            br
+            input :type => 'password', :name => 'checkpass'
+            br
+            br
+            input :type => 'hidden', :name => 'uid', :value => @user.pk
+            input :type => 'submit', :value => 'create'
+        end
+    end
+end

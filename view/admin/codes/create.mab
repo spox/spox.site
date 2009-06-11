@@ -1,0 +1,23 @@
+fieldset do
+    legend do
+        text 'Create Code'
+    end
+    form :action => '/admin/codes/process/create', :method => 'POST' do
+        text 'summary:'
+        br
+        input :type => 'text', :name => 'summary', :size => '40'
+        br
+        br
+        text 'code:'
+        br
+        text '<textarea name="code" rows="50" cols="300"></textarea>'
+        br
+        br
+        text 'tags (tag the language):'
+        br
+        input :type => 'text', :name => 'tags', :size => '40'
+        br
+        br
+        input :type => 'submit', :value => 'create'
+    end
+end

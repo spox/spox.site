@@ -1,0 +1,20 @@
+fieldset do
+    legend do
+        text 'Tags'
+    end
+    div :class => 'content' do
+        alpha = nil
+        Models::Tag.order(:name.asc).each do |tag|
+            if(tag.name.slice(0) != alpha)
+                alpha = tag.name.slice(0)
+                div :class => 'alpha' do
+                    text "#{alpha}:"
+                end
+            end
+            a :href => "/tags/view/#{tag.name}" do
+                text tag.name
+            end
+            text ' '
+        end
+    end
+end

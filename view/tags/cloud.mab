@@ -1,0 +1,16 @@
+fieldset do
+    legend do
+        text 'Cloud'
+    end
+    div :class => 'content' do
+        @tags.each do |t|
+            tag = Models::Tag[t[:tag_id].to_i]
+            span :style => "font-size: #{@max_size * (t[:count].to_f / @size)}em;" do
+                a :href => "/tags/view/#{tag.name}" do
+                    text tag.name
+                end
+            end
+            text ' '
+        end
+    end
+end

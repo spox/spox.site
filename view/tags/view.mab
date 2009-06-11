@@ -1,0 +1,51 @@
+fieldset do
+    legend do
+        text @tag.name
+    end
+    div :class => 'content' do
+        unless(@tag.notes.empty?)
+            div :class => 'alpha' do
+                text 'Notes:'
+            end
+            @tag.notes.each do |n|
+                a :href => "/logs/view/#{n.pk}" do
+                    text n.title + ' - ' + n.created.to_s
+                end
+                br
+            end
+        end
+        unless(@tag.projects.empty?)
+            div :class => 'alpha' do
+                text 'Projects:'
+            end
+            @tag.projects.each do |p|
+                a :href => "/projects/view/#{p.pk}" do
+                    text p.title
+                end
+                br
+            end
+        end
+        unless(@tag.links.empty?)
+            div :class => 'alpha' do
+                text 'Links:'
+            end
+            @tag.links.each do |l|
+                a :href => "/links/view/#{l.pk}" do
+                    text l.title
+                end
+                br
+            end
+        end
+        unless(@tag.codes.empty?)
+            div :class => 'alpha' do
+                text 'Codes:'
+            end
+            @tag.codes.each do |c|
+                a :href => "/codes/view/#{c.pk}" do
+                    text c.summary
+                end
+                br
+            end
+        end
+    end
+end

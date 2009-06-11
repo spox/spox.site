@@ -1,0 +1,42 @@
+fieldset do
+    legend do
+        text 'Edit Project'
+    end
+    form :action => '/admin/projects/process/edit', :method => 'POST' do
+        b 'title:'
+        br
+        input :type => 'text', :name => 'title', :value => @project.title
+        br
+        br
+        b 'rss:'
+        br
+        input :type => 'text', :name => 'rss', :value => @project.rss
+        br
+        br
+        b 'website:'
+        br
+        input :type => 'text', :name => 'website', :value => @project.website
+        br
+        br
+        b 'description:'
+        br
+        text '<textarea name="description">' + @project.description + '</textarea>'
+        br
+        br
+        b 'tags:'
+        br
+        input :type => 'input', :name => 'tags', :value => @project.tags.empty? ? '' : @project.tags.map{|t|t.name}.join(' ')
+        br
+        br
+        b 'public: '
+        if(@project.public)
+            input :type => 'checkbox', :name => 'public', :value => '1', :checked => 'checked'
+        else
+            input :type => 'checkbox', :name => 'public', :value => '1'
+        end
+        br
+        br
+        input :type => 'hidden', :name => 'pid', :value => @project.pk
+        input :type => 'submit', :value => 'edit'
+    end
+end

@@ -1,0 +1,23 @@
+div :class => 'formbox' do
+    fieldset do
+        legend do
+            text 'Login'
+        end
+        div :class => 'content' do
+            form :action => '/do_login', :method => 'POST' do
+                text 'Username:'
+                br
+                input :type => 'text', :name => 'username', :size => '30'
+                br
+                text 'Password:'
+                br
+                input :type => 'password', :name => 'password', :size => '30'
+                br
+                br
+                div :class => 'buttons' do
+                    input :type => 'submit', :value => 'Login'
+                end
+            end
+        end
+    end
+end
