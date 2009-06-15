@@ -5,6 +5,7 @@ html do
         link :rel => "stylesheet", :href => "/css/blueprint/src/typography.css", :type => "text/css", :media => "screen, projection"
         link :rel => "stylesheet", :href => "/css/blueprint/print.css", :type => "text/css", :media => "print"
         link :rel => "stylesheet", :href => "/css/spox.css", :type => "text/css", :media => "screen, projection"
+        link :rel => "stylesheet", :href => "/css/code/lazy.css", :type => "text/css", :media => "screen, projection"
         text '<!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="ie.css" type="text/css" media="screen, projection"><![endif]-->'
     end
     body do
