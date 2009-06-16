@@ -22,9 +22,8 @@ class MainController < Controller
 
     def about
         tag = Models::Tag.filter(:name => 'aboutpage').first
-        if(tag && !tag.articles.empty?)
-            page = tag.articles[0]
-            format_page(page)
+        if(tag && !tag.notes.empty?)
+            redirect("/logs/view/#{tag.notes[0].pk}")
         else
             redirect("/error/#{Ramaze::Helper::CGI::url_encode('Page Not Found')}")
         end
