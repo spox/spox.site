@@ -9,7 +9,7 @@ fieldset do
         end
     end
     div :class => 'content' do
-        text smab(@link.description)
+        smab(@link.description)
     end
 end
 div :class => 'controls' do

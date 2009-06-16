@@ -34,7 +34,7 @@ fieldset do
             b 'Description: '
         end
         div :class => 'content' do
-            text smab(@project.description)
+            smab(@project.description)
         end
     end
 end

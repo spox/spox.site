@@ -16,7 +16,7 @@ fieldset do
         end
     end
     div :class => 'content' do
-        text smab(@log.content)
+        smab(@log.content)
     end
 end
 div :class => 'controls' do

@@ -1,4 +1,4 @@
-html do
+xhtml_strict do
     head do
         title 'spox box [serialized idea objects]'
         link :rel => "stylesheet", :href => "/css/blueprint/screen.css", :type => "text/css", :media => "screen, projection"
