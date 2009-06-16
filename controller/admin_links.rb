@@ -52,7 +52,7 @@ class AdminLinksController < Controller
     def do_edit
         begin
             link = Models::Link[request[:lid].to_i]
-            raise 'Failed to locate link to modify' unless code
+            raise 'Failed to locate link to modify' unless link
             link.url = request[:url]
             link.title = request[:title]
             link.description = request[:description]
