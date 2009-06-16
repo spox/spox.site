@@ -1,14 +1,21 @@
 module Ramaze
     module Helper
         module Markabatter
+            HELPERS = [:Codebatter, :Tagalator, :Markabatter]
+            def build_builder
+                b = ::Markaby::Builder.new
+                HELPERS.each{|h| b.extend(Ramaze::Helper.const_get(h))}
+                return b
+            end
             # string:: String of Markaby to translate
             # helpers:: Generally the calling controller. Not needed but can be helpful
             # This will take a string of Markaby and return the
             # results from Markaby. This allows for storing and
             # redisplaying of Markaby codes
             def smab(string, helper=nil)
-                template = ::Markaby::Template.new(string)
-                return template.render({}, helper)
+                builder = build_builder
+                builder.instance_eval(string)
+                return builder.to_s
             end
             # helpers:: Generally all that will be needed is the controller
             # you are calling from.
