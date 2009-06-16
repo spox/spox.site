@@ -11,7 +11,8 @@ module Models
         one_to_many :notes, :class => 'Models::Note'
 
         def password=(pass)
-            update(:password => Digest::SHA1.hexdigest(pass))
+            pass = Digest::SHA1.hexdigest(pass)
+            super(pass)
         end
 
         def valid_password?(pass)
