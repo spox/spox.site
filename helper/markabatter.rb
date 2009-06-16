@@ -7,10 +7,8 @@ module Ramaze
             # results from Markaby. This allows for storing and
             # redisplaying of Markaby codes
             def smab(string, helper=nil)
-                builder = ::Markaby::Builder.new({}, helper)
-                builder.instance_eval(string)
-                val = builder.to_s
-                return val
+                template = ::Markaby::Template.new(string)
+                return template.render({}, helper)
             end
             # helpers:: Generally all that will be needed is the controller
             # you are calling from.
