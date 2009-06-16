@@ -11,6 +11,16 @@ class LinksController < Controller
         link.save
         redirect(link.url)
     end
+
+    def tagout(tag)
+        tag = Models::Tag.filter(:name => tag).first
+        if(tag && !tag.links.empty?)
+            out(tag.links[0].pk)
+        else
+            flash[:error] = 'Failed to find requested link'
+            redirect_referer
+        end
+    end
     
     def index
         redirect('/links/list')
