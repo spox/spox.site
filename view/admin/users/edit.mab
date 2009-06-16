@@ -30,7 +30,7 @@ div :class => 'formbox' do
             br
             br
             input :type => 'hidden', :name => 'uid', :value => @user.pk
-            input :type => 'submit', :value => 'create'
+            input :type => 'submit', :value => 'edit'
         end
     end
 end

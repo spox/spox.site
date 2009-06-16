@@ -11,11 +11,10 @@ module Models
         one_to_many :notes, :class => 'Models::Note'
 
         def password=(pass)
-            values[:password] = Digest::SHA1.hexdigest(pass)
+            update(:password => Digest::SHA1.hexdigest(pass))
         end
 
         def valid_password?(pass)
-            puts "#{password}: #{Digest::SHA1.hexdigest(pass)}"
             password == Digest::SHA1.hexdigest(pass)
         end
     end
