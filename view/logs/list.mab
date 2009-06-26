@@ -18,8 +18,7 @@ div do
                 end
             end
             div :class => 'content' do
-                c = smab(note.content)
-                text c.slice(0..c.index('</p>'))
+                smab(note.content, nil, '</p>')
             end
             div :class => 'more' do
                 a :href => "/logs/view/#{note.pk}" do
