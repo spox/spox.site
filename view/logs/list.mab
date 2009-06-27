@@ -22,7 +22,7 @@ div do
             end
             div :class => 'more' do
                 a :href => "/logs/view/#{note.pk}" do
-                    text 'link'
+                    text 'read more'
                 end
             end
         end
